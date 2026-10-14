@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 第二次學科檢定考試入口</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            padding: 16px 12px;
+            background-color: #f1f5f9;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #1e293b;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .main-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .main-header h1 {
+            font-size: 24px;
+            font-weight: 900;
+            color: #0f172a;
+            margin: 0;
+            letter-spacing: 0.5px;
+        }
+
+        /* 明顯的頂部場次切換頁籤 (Tabs) */
+        .tab-container {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            background-color: #cbd5e1;
+            padding: 6px;
+            border-radius: 14px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 14px 4px;
+            border: none;
+            border-radius: 10px;
+            background-color: #ffffff;
+            color: #475569;
+            font-size: 14px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+            line-height: 1.4;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .tab-btn small {
+            font-size: 11px;
+            font-weight: 700;
+            opacity: 0.85;
+            display: block;
+            margin-top: 2px;
+        }
+
+        .tab-btn.active {
+            background-color: #0f172a;
+            color: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 場次內容區塊控制 */
+        .session-content {
+            display: none;
+        }
+
+        .session-content.active {
+            display: block;
+        }
+
+        .group-label {
+            font-size: 14px;
+            font-weight: 800;
+            color: #475569;
+            margin: 18px 0 8px 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .exam-card {
+            background-color: #ffffff;
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            border-left-width: 8px;
+            transition: all 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .exam-card:active {
+            transform: scale(0.98);
+            background-color: #f8fafc;
+        }
+
+        .exam-title {
+            font-size: 22px;
+            font-weight: 900;
+            color: #0f172a;
+            margin-bottom: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        .exam-action {
+            font-size: 15px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* 職種色彩 */
+        .border-ca { border-left-color: #6366f1; }
+        .text-ca { color: #6366f1; }
+
+        .border-sa { border-left-color: #059669; }
+        .text-sa { color: #059669; }
+
+        .border-b { border-left-color: #7c3aed; }
+        .text-b { color: #7c3aed; }
+
+        .border-p { border-left-color: #f97316; }
+        .text-p { color: #f97316; }
+
+        .border-gr { border-left-color: #2563eb; }
+        .text-gr { color: #2563eb; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="main-header">
+        <h1>2026 第二次學科檢定考試入口</h1>
+    </div>
+
+    <!-- 明顯的頂部場次切換按鈕 -->
+    <div class="tab-container">
+        <button class="tab-btn active" onclick="switchSession(1)">第一場次<small>09:00 - 10:30</small></button>
+        <button class="tab-btn" onclick="switchSession(2)">第二場次<small>10:40 - 12:10</small></button>
+        <button class="tab-btn" onclick="switchSession(3)">第三場次<small>13:00 - 14:30</small></button>
+    </div>
+
+    <!-- ================= 第一場次 ================= -->
+    <div id="session-1" class="session-content active">
+        <div class="group-label">客服專員 (CA)</div>
+        <div class="exam-card border-ca" onclick="openExam('CA_L1')">
+            <div class="exam-title">L1 客服專員</div>
+            <div class="exam-action text-ca">▶ 點擊進入測驗</div>
+        </div>
+        <div class="exam-card border-ca" onclick="openExam('CA_L2')">
+            <div class="exam-title">L2 客服專員</div>
+            <div class="exam-action text-ca">▶ 點擊進入測驗</div>
+        </div>
+
+        <div class="group-label">板金技師 (B)</div>
+        <div class="exam-card border-b" onclick="openExam('BP_S1')">
+            <div class="exam-title">S1 板金技師</div>
+            <div class="exam-action text-b">▶ 點擊進入測驗</div>
+        </div>
+        <div class="exam-card border-b" onclick="openExam('BP_S2')">
+            <div class="exam-title">S2 板金技師</div>
+            <div class="exam-action text-b">▶ 點擊進入測驗</div>
+        </div>
+        <div class="exam-card border-b" onclick="openExam('BP_S3')">
+            <div class="exam-title">S3 板金技師</div>
+            <div class="exam-action text-b">▶ 點擊進入測驗</div>
+        </div>
+
+        <div class="group-label">塗裝技師 (P)</div>
+        <div class="exam-card border-p" onclick="openExam('PT_S1')">
+            <div class="exam-title">S1 塗裝技師</div>
+            <div class="exam-action text-p">▶ 點擊進入測驗</div>
+        </div>
+        <div class="exam-card border-p" onclick="openExam('PT_S2')">
+            <div class="exam-title">S2 塗裝技師</div>
+            <div class="exam-action text-p">▶ 點擊進入測驗</div>
+        </div>
+        <div class="exam-card border-p" onclick="openExam('PT_S3')">
+            <div class="exam-title">S3 塗裝技師</div>
+            <div class="exam-action text-p">▶ 點擊進入測驗</div>
+        </div>
+
+        <div class="group-label">一般整備 (GR)</div>
+        <div class="exam-card border-gr" onclick="openExam('GR_TA')">
+            <div class="exam-title">TA 一般整備</div>
+            <div class="exam-action text-gr">▶ 點擊進入測驗</div>
+        </div>
+    </div>
+
+    <!-- ================= 第二場次 ================= -->
+    <div id="session-2" class="session-content">
+        <div class="group-label">一般整備 (GR)</div>
+        <div class="exam-card border-gr" onclick="openExam('G4')">
+            <div class="exam-title">G4 一般整備</div>
+            <div class="exam-action text-gr">▶ 點擊進入測驗</div>
+        </div>
+        <div class="exam-card border-gr" onclick="openExam('G3')">
+            <div class="exam-title">G3 一般整備</div>
+            <div class="exam-action text-gr">▶ 點擊進入測驗</div>
+        </div>
+        <div class="exam-card border-gr" onclick="openExam('G2')">
+            <div class="exam-title">G2 一般整備</div>
+            <div class="exam-action text-gr">▶ 點擊進入測驗</div>
+        </div>
+        <div class="exam-card border-gr" onclick="openExam('G1')">
+            <div class="exam-title">G1 一般整備</div>
+            <div class="exam-action text-gr">▶ 點擊進入測驗</div>
+        </div>
+
+        <div class="group-label">服務專員 (SA)</div>
+        <div class="exam-card border-sa" onclick="openExam('SA_L3_MAJOR')">
+            <div class="exam-title">L3大損</div>
+            <div class="exam-action text-sa">▶ 點擊進入測驗</div>
+        </div>
+    </div>
+
+    <!-- ================= 第三場次 ================= -->
+    <div id="session-3" class="session-content">
+        <div class="group-label">服務專員 (SA)</div>
+        <div class="exam-card border-sa" onclick="openExam('SA_L1')">
+            <div class="exam-title">L1 服務專員</div>
+            <div class="exam-action text-sa">▶ 點擊進入測驗</div>
+        </div>
+        <div class="exam-card border-sa" onclick="openExam('SA_L2')">
+            <div class="exam-title">L2 服務專員</div>
+            <div class="exam-action text-sa">▶ 點擊進入測驗</div>
+        </div>
+        <div class="exam-card border-sa" onclick="openExam('SA_L2_MINOR')">
+            <div class="exam-title">L2中小損</div>
+            <div class="exam-action text-sa">▶ 點擊進入測驗</div>
+        </div>
+        <div class="exam-card border-sa" onclick="openExam('SA_L3')">
+            <div class="exam-title">L3 服務專員</div>
+            <div class="exam-action text-sa">▶ 點擊進入測驗</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const EXAM_URLS = {
+        // 第一場次 (09:00 - 10:30)
+        'CA_L1': 'https://forms.cloud.microsoft/r/06TQ1KbhCk',
+        'CA_L2': 'https://forms.cloud.microsoft/r/Uuby8GHNjD',
+        'BP_S1': 'https://forms.cloud.microsoft/r/D0aDJgU3Rw',
+        'BP_S2': 'https://forms.cloud.microsoft/r/D0aDJgU3Rw',
+        'BP_S3': 'https://forms.cloud.microsoft/r/fak13TpXMS',
+        'PT_S1': 'https://forms.cloud.microsoft/r/xaZHce6ZAN',
+        'PT_S2': 'https://forms.cloud.microsoft/r/Sr46qCeqef',
+        'PT_S3': 'https://forms.cloud.microsoft/r/ckAXqAHZMH',
+        'GR_TA': 'https://forms.cloud.microsoft/r/QeE96KM7AY',
+
+        // 第二場次 (10:40 - 12:10)
+        'G4': 'https://forms.cloud.microsoft/r/BtwJp19ySR',
+        'G3': 'https://forms.cloud.microsoft/r/Q67GLTUzrc',
+        'G2': 'https://forms.cloud.microsoft/r/AXeZm3dJK4',
+        'G1': 'https://forms.cloud.microsoft/r/Js5Kg6wm4E',
+        'SA_L3_MAJOR': 'https://forms.cloud.microsoft/r/Arbcz84MBD',
+
+        // 第三場次 (13:00 - 14:30)
+        'SA_L1': 'https://forms.cloud.microsoft/r/TTD7ca2bh4',
+        'SA_L2': 'https://forms.cloud.microsoft/r/FmQ9F60feV',
+        'SA_L2_MINOR': 'https://forms.cloud.microsoft/r/QYVgJeVdUV',
+        'SA_L3': 'https://forms.cloud.microsoft/r/CPrJeaBiyM'
+    };
+
+    function switchSession(sessionNum) {
+        const buttons = document.querySelectorAll('.tab-btn');
+        buttons.forEach((btn, index) => {
+            if (index === sessionNum - 1) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+
+        const sessions = document.querySelectorAll('.session-content');
+        sessions.forEach((s, index) => {
+            if (index === sessionNum - 1) {
+                s.classList.add('active');
+            } else {
+                s.classList.remove('active');
+            }
+        });
+    }
+
+    function openExam(id) {
+        const url = EXAM_URLS[id];
+        if (url && url !== '#') {
+            window.open(url, '_blank', 'noopener,noreferrer');
+        } else {
+            alert('此考科的測驗連結尚未設定，請洽管理員。');
+        }
+    }
+</script>
+
+</body>
+</html>
